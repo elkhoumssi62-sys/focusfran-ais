@@ -29,7 +29,27 @@ body {
     padding: 0;
     color: #2c3e50;
 }
+/* Style de base du header */
+header {
+    position: fixed; /* Le menu reste en haut */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: all 0.4s ease; /* Animation fluide */
+}
 
+/* Style quand on défile (activé par le JS) */
+.header-active {
+    background-color: #2980b9 !important; /* Change de couleur */
+    padding: 10px 0 !important; /* Devient plus compact */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Pour éviter que le contenu ne passe sous le menu fixe */
+body {
+    padding-top: 80px; 
+}
 /* En-tête (Navbar) */
 header {
     background-color: #2c3e50;
