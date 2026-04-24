@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Exercices - Auto-évaluation</title>
+    <style>
+        :root {
+            --success: #27ae60;
+            --error: #e74c3c;
+            --primary: #2c3e50;
+            --bg: #f4f7f6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--primary);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--success);
+            margin-bottom: 30px;
+        }
+
+        .nav-back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .quiz-section {
+            margin-bottom: 40px;
+        }
+
+        .quiz-section h2 {
+            background: var(--primary);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+        }
+
+        .question-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .option-btn {
+            padding: 12px;
+            border: 2px solid #eee;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            text-align: left;
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+
+        .option-btn:hover {
+            border-color: #3498db;
+            background: #f0f7ff;
+        }
+
+        /* Classes pour le JavaScript */
+        .correct {
+            background-color: #d4edda !important;
+            border-color: var(--success) !important;
+            color: #155724;
+        }
+
+        .wrong {
+            background-color: #f8d7da !important;
+            border-color: var(--error) !important;
+            color: #721c24;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="nav-back">⬅ Retour au Tableau de Bord</a>
+
+    <header>
+        <h1>📝 Centre d'Exercices Interactifs</h1>
+        <p>Testez vos connaissances sur le programme de français</p>
+    </header>
+
+    <div class="quiz-section">
+        <h2>Séquence 1 & 8 : Types de discours et Lumières</h2>
+        
+        <div class="question-card">
+            <p><strong>1. Quelle est la fonction principale d'un plaidoyer ?</strong></p>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this, false, 'Le plaidoyer sert à défendre, pas à accuser.')">Accuser une personne ou une idée</button>
+                <button class="option-btn" onclick="checkAnswer(this, true, 'Excellent ! Un plaidoyer soutient une cause.')">Défendre une cause ou une personne</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, 'Non, cela c\'est le récit narratif.')">Raconter une histoire imaginaire</button>
+            </div>
+            <p class="feedback"></p>
+        </div>
+
+        <div class="question-card">
+            <p><strong>2. Dans "Candide", quel procédé Voltaire utilise-t-il pour dire le contraire de ce qu'il pense ?</strong></p>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this, false, 'La métaphore est une comparaison sans outil.')">La métaphore</button>
+                <button class="option-btn" onclick="checkAnswer(this, true, 'Bravo ! L\'ironie est l\'arme principale de Voltaire.')">L'ironie</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, 'Non, l\'allégorie représente une idée abstraite.')">L'allégorie</button>
+            </div>
+            <p class="feedback"></p>
+        </div>
+    </div>
+
+    <div class="quiz-section">
+        <h2>Séquence 9 : Roman Maghrébin (Khaïr-Eddine)</h2>
+        
+        <div class="question-card">
+            <p><strong>3. Quel objet symbolise l'ouverture sur le monde moderne pour le vieux couple ?</strong></p>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this, false, 'Non, Bouchaïb refuse la télévision.')">La télévision</button>
+                <button class="option-btn" onclick="checkAnswer(this, true, 'Exact ! La radio est leur seul lien avec l\'actualité mondiale.')">Le poste de radio</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, 'Le téléphone n\'est pas central dans ce récit.')">Le téléphone portable</button>
+            </div>
+            <p class="feedback"></p>
+        </div>
+
+        <div class="question-card">
+            <p><strong>4. Comment appelle-t-on une description qui donne une image positive d'un lieu ?</strong></p>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(this, true, 'Correct ! On valorise le sujet.')">Une description valorisante</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, 'Dévalorisante signifie critiquer ou salir.')">Une description dévalorisante</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, 'Objective signifie sans jugement, ce qui est rare ici.')">Une description objective</button>
+            </div>
+            <p class="feedback"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p style="text-align:center; color:#7f8c8d;">Machine à LANGUE - Auto-correction intégrée</p>
+    </footer>
+</div>
+
+<script>
+    function checkAnswer(button, isCorrect, message) {
+        // Trouver le conteneur de la question
+        const card = button.closest('.question-card');
+        const feedback = card.querySelector('.feedback');
+        const allButtons = card.querySelectorAll('.option-btn');
+
+        // Désactiver tous les boutons de cette question après le clic
+        allButtons.forEach(btn => btn.style.pointerEvents = 'none');
+
+        if (isCorrect) {
+            button.classList.add('correct');
+            feedback.style.color = '#27ae60';
+        } else {
+            button.classList.add('wrong');
+            feedback.style.color = '#e74c3c';
+            // Montrer aussi la bonne réponse
+            allButtons.forEach(btn => {
+                if (btn.innerText.includes('Correct') || btn.getAttribute('onclick').includes('true')) {
+                    btn.classList.add('correct');
+                }
+            });
+        }
+
+        feedback.innerText = message;
+        feedback.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>

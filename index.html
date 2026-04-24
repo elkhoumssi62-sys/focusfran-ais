@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine à LANGUE - Programme Complet</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --trim1-color: #27ae60;
+            --trim2-color: #f39c12;
+            --trim3-color: #e74c3c;
+            --bg: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: white;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        button.active { background: var(--accent); color: white; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 8px solid #ccc;
+        }
+
+        /* Couleurs par trimestre */
+        .trim1 { border-left-color: var(--trim1-color); }
+        .trim2 { border-left-color: var(--trim2-color); }
+        .trim3 { border-left-color: var(--trim3-color); }
+
+        .card h3 { margin-top: 0; color: var(--primary); font-size: 1.1rem; }
+        .date { font-size: 0.85rem; color: #666; font-weight: bold; }
+        
+        .content-list { list-style: none; padding: 0; font-size: 0.9rem; }
+        .content-list li { margin-bottom: 5px; }
+
+        .btn-open {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h2>Focus Français </h2>
+    <p>Planification Annuelle des Séquences</p>
+</header>
+
+<div class="filters">
+    <button onclick="filter('all')" class="active">Tout</button>
+    <button onclick="filter('trim1')">Trimestre 1</button>
+    <button onclick="filter('trim2')">Trimestre 2</button>
+    <button onclick="filter('trim3')">Trimestre 3</button>
+    <a href="exercices.html" style="background-color: #27ae60; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-left: 10px;">📝 Faire les exercices</a>
+    <div class="main-navigation">
+    <button onclick="filterSelection('all')" class="active">📚 Cours</button>
+    <a href="exercices.html" class="btn-exercices">📝 Espace Exercices (QCM)</a>
+</div>
+</div>
+
+<div class="grid">
+    <div class="card trim1">
+        <div class="date">Septembre - Octobre</div>
+        <h3>Séquence 1 : Types de discours</h3>
+        <ul class="content-list">
+            <li>📖 Narratif, Descriptif, Argumentatif</li>
+            <li>🧠 Types de phrases, Connecteurs</li>
+            <li>✍️ Suite de récit, Opinion</li>
+        </ul>
+        <a href="seq1.html" class="btn-open">Ouvrir</a>
+    </div>
+
+    <div class="card trim1">
+        <div class="date">Novembre - Décembre</div>
+        <h3>Séquence 2 : Récit réaliste</h3>
+        <ul class="content-list">
+            <li>📖 Caractéristiques, Focalisations</li>
+            <li>🧠 Expansion nominale, Relative</li>
+            <li>✍️ Portrait, Ellipse, Poésie (Ode)</li>
+        </ul>
+        <a href="seq2.html" class="btn-open">Ouvrir</a>
+    </div>
+
+    <div class="card trim2">
+        <div class="date">Janvier</div>
+        <h3>Séquence 3 : Récit fantastique</h3>
+        <ul class="content-list">
+            <li>📖 Surnaturel, Suspense, Sonnet</li>
+            <li>🧠 Complétive, Participe passé</li>
+            <li>✍️ Atmosphère, Réécriture</li>
+        </ul>
+        <a href="seq3.html" class="btn-open">Ouvrir</a>
+    </div>
+
+    <div class="card trim2">
+        <div class="date">Février</div>
+        <h3>Séquence 4 : Le Théâtre</h3>
+        <ul class="content-list">
+            <li>📖 Exposition, Nœud, Dénouement</li>
+            <li>🧠 Discours rapporté, Circonstancielles</li>
+            <li>✍️ Produire un dialogue, Scène</li>
+        </ul>
+        <a href="seq4.html" class="btn-open">Ouvrir</a>
+    </div>
+
+    <div class="card trim2">
+        <div class="date">Mars</div>
+        <h3>Séquence 5 : L’autobiographie</h3>
+        <ul class="content-list">
+            <li>📖 Pacte, Vérité, Journal intime</li>
+            <li>🧠 Discours indirect libre, Champs lex.</li>
+            <li>✍️ Écriture de soi, Résumé</li>
+        </ul>
+        <a href="seq5.html" class="btn-open">Ouvrir</a>
+    </div>
+
+    <div class="card trim3">
+        <div class="date">Avril</div>
+        <h3>Séquence 6 : Science-fiction</h3>
+        <ul class="content-list">
+            <li>📖 Espace-temps, Insolite, Surréalisme</li>
+            <li>🧠 Nominalisation, Registres</li>
+            <li>✍️ Récits imaginaires, Fiches</li>
+        </ul>
+        <a href="seq6.html" class="btn-open">Ouvrir</a>
+    </div>
+
+    <div class="card trim3">
+        <div class="date">Mai</div>
+        <h3>Séquence 7 : Récit argumentatif</h3>
+        <ul class="content-list">
+            <li>📖 Plaidoyer, Réquisitoire (Droits)</li>
+            <li>🧠 Registres (Tragique, Satirique)</li>
+            <li>✍️ Texte argumentatif complet</li>
+        </ul>
+        <a href="seq7.html" class="btn-open">Ouvrir</a>
+    </div>
+
+    <div class="card trim3">
+        <div class="date">Fin Mai - Juin</div>
+        <h3>Séquence 8 : Siècle des Lumières</h3>
+        <ul class="content-list">
+            <li>📖 Satire, Ironie, Optimisme</li>
+            <li>🧠 Lexique du raisonnement</li>
+            <li>✍️ Texte de réflexion, Compte rendu</li>
+        </ul>
+        <a href="seq8.html" class="btn-open">Ouvrir</a>
+    </div>
+
+    <div class="card trim3">
+        <div class="date">Juin</div>
+        <h3>Séquence 9 : Roman maghrébin</h3>
+        <ul class="content-list">
+            <li>📖 Tradition/Modernité (Khair-Eddine)</li>
+            <li>🧠 Dialogue, Description valorisante</li>
+            <li>✍️ Récit vie simple, Argumentation</li>
+        </ul>
+        <a href="seq9.html" class="btn-open">Ouvrir</a>
+    </div>
+
+    <div class="card trim3">
+        <div class="date">Fin d'année</div>
+        <h3>Séquence 10 : Roman réaliste XIXe</h3>
+        <ul class="content-list">
+            <li>📖 Bourgeoisie, Argent, Effet de réel</li>
+            <li>🧠 Lexique valorisant/dévalorisant</li>
+            <li>✍️ Récit complexe, Résumé</li>
+        </ul>
+        <a href="seq10.html" class="btn-open">Ouvrir</a>
+    </div>
+</div>
+
+<script>
+    function filter(c) {
+        const cards = document.querySelectorAll('.card');
+        const btns = document.querySelectorAll('button');
+        
+        btns.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        cards.forEach(card => {
+            card.classList.add('hidden');
+            if (c === 'all' || card.classList.contains(c)) {
+                card.classList.remove('hidden');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
