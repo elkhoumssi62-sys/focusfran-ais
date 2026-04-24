@@ -3,271 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Machine à LANGUE - Focus Français</title>
+    <title>Machine à LANGUE | Plateforme Pédagogique</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root {
             --primary: #2c3e50;
             --accent: #3498db;
-            --trim1-color: #27ae60;
-            --trim2-color: #f39c12;
-            --trim3-color: #e74c3c;
-            --bg: #f4f7f6;
-            --white: #ffffff;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --bg: #f0f2f5;
+            --glass: rgba(255, 255, 255, 0.9);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg); color: var(--primary); scroll-behavior: smooth; }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg);
-            color: var(--primary);
-            padding-top: 100px; /* Espace pour le menu fixe */
-        }
-
-        /* --- Navigation Enchantée --- */
+        /* --- EN-TÊTE MAGNIFIQUE --- */
         header {
-            position: fixed;
-            top: 0; width: 100%;
-            background: var(--primary);
-            color: white;
-            padding: 15px 30px;
+            height: 450px;
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), 
+                        url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1350&q=80') center/cover;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            transition: 0.4s;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        header.scrolled {
-            background: rgba(44, 62, 80, 0.95);
-            backdrop-filter: blur(5px);
-            padding: 10px 30px;
-        }
-
-        .logo { font-weight: 600; font-size: 1.4rem; letter-spacing: 1px; }
-
-        /* --- Filtres et Boutons --- */
-        .controls {
-            max-width: 1100px;
-            margin: 20px auto;
-            display: flex;
+            flex-direction: column;
             justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            padding: 0 20px;
-        }
-
-        .filter-btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            background: var(--white);
-            font-weight: 600;
-            transition: 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .filter-btn.active { background: var(--accent); color: white; }
-        .filter-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
-
-        .btn-action {
-            background: var(--trim1-color);
+            align-items: center;
             color: white;
-            text-decoration: none;
-            padding: 10px 25px;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        /* --- Grille de Séquences --- */
-        .grid {
-            max-width: 1100px;
-            margin: 30px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+            text-align: center;
+            border-bottom: 8px solid var(--accent);
             padding: 20px;
         }
 
+        header h1 { font-size: 3.5rem; font-weight: 700; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); margin-bottom: 10px; }
+        header p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; }
+
+        /* --- NAVIGATION FIXE --- */
+        .nav-bar {
+            position: sticky; top: 0; background: var(--primary);
+            padding: 15px 0; display: flex; justify-content: center;
+            gap: 15px; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* --- FILTRES & BOUTONS --- */
+        .filter-btn {
+            padding: 8px 18px; border: none; border-radius: 20px;
+            cursor: pointer; background: white; font-weight: 600; transition: 0.3s;
+        }
+        .filter-btn.active { background: var(--accent); color: white; }
+        .filter-btn:hover { background: #eee; transform: translateY(-2px); }
+
+        /* --- SECTION EXERCICES --- */
+        .section-title { text-align: center; margin: 50px 0 30px; font-size: 2rem; color: var(--primary); }
+        .quiz-container {
+            max-width: 800px; margin: 0 auto 50px; background: white;
+            padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .question-box { margin-bottom: 20px; padding: 15px; border-radius: 10px; background: #f9f9f9; }
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+        .option-btn { 
+            padding: 10px; border: 2px solid #ddd; border-radius: 8px; 
+            background: white; cursor: pointer; transition: 0.3s; font-family: inherit;
+        }
+        .option-btn:hover { border-color: var(--accent); background: #ebf5ff; }
+        .correct { background: var(--success) !important; color: white; border-color: var(--success) !important; }
+        .incorrect { background: var(--danger) !important; color: white; border-color: var(--danger) !important; }
+
+        /* --- GRILLE DES SÉQUENCES --- */
+        .grid {
+            max-width: 1200px; margin: 0 auto 50px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px; padding: 20px;
+        }
         .card {
-            background: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            transition: 0.4s;
-            position: relative;
-            opacity: 0; transform: translateY(20px); /* Pour l'animation JS */
+            background: white; border-radius: 15px; overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s;
+            border-left: 10px solid #ccc;
         }
-
-        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-
-        .card-header {
-            height: 120px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        .card-header::after {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.3);
-        }
-
-        .card-body { padding: 20px; border-top: 5px solid #ccc; }
-
-        /* Bordures par trimestre */
-        .trim1 .card-body { border-top-color: var(--trim1-color); }
-        .trim2 .card-body { border-top-color: var(--trim2-color); }
-        .trim3 .card-body { border-top-color: var(--trim3-color); }
-
-        .date { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; }
-        .card h3 { margin: 10px 0; font-size: 1.2rem; }
-        .content-list { list-style: none; padding-left: 5px; }
-        .content-list li { font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center; }
-        .content-list li i { color: var(--accent); margin-right: 10px; font-size: 0.8rem; }
-
+        .card:hover { transform: translateY(-10px); }
+        .trim1 { border-left-color: var(--success); }
+        .trim2 { border-left-color: var(--warning); }
+        .trim3 { border-left-color: var(--danger); }
+        .card-content { padding: 20px; }
+        .card h3 { margin-bottom: 10px; font-size: 1.1rem; }
         .btn-open {
-            display: block;
-            text-align: center;
-            margin-top: 15px;
-            padding: 10px;
-            background: #f8f9fa;
-            color: var(--primary);
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: 0.3s;
+            display: inline-block; margin-top: 15px; padding: 8px 20px;
+            background: var(--primary); color: white; text-decoration: none;
+            border-radius: 5px; font-size: 0.9rem;
         }
-        .btn-open:hover { background: var(--primary); color: white; }
 
-        /* --- Boutons Flottants --- */
+        /* --- BOUTONS FLOTTANTS --- */
         .social-float {
-            position: fixed;
-            bottom: 30px; right: 30px;
-            display: flex; flex-direction: column; gap: 15px;
-            z-index: 2000;
+            position: fixed; bottom: 20px; right: 20px;
+            display: flex; flex-direction: column; gap: 10px;
         }
-
         .social-btn {
             width: 50px; height: 50px; border-radius: 50%;
             display: flex; justify-content: center; align-items: center;
-            color: white; font-size: 1.2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: 0.3s; text-decoration: none;
+            color: white; font-size: 1.3rem; text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: 0.3s;
         }
-        .social-btn:hover { transform: scale(1.1) rotate(10deg); }
-        .fb { background: #1877F2; }
-        .wa { background: #25D366; }
-
+        .social-btn:hover { transform: scale(1.1); }
         .hidden { display: none; }
     </style>
 </head>
 <body>
 
-<header id="mainHeader">
-    <div class="logo"><i class="fas fa-graduation-cap"></i> Machine à LANGUE</div>
-    <div class="nav-links">
-        <a href="exercices.html" class="btn-action">Espace QCM</a>
-    </div>
+<header>
+    <h1>Focus Français</h1>
+    <p>La Machine à LANGUE : Planification annuelle, ressources linguistiques et stratégies digitales.</p>
 </header>
 
-<div class="controls">
-    <button class="filter-btn active" onclick="filterCards('all', this)">Tout</button>
-    <button class="filter-btn" onclick="filterCards('trim1', this)">Trimestre 1</button>
-    <button class="filter-btn" onclick="filterCards('trim2', this)">Trimestre 2</button>
-    <button class="filter-btn" onclick="filterCards('trim3', this)">Trimestre 3</button>
+<div class="nav-bar">
+    <button class="filter-btn active" onclick="filter('all')">Tout</button>
+    <button class="filter-btn" onclick="filter('trim1')">Trimestre 1</button>
+    <button class="filter-btn" onclick="filter('trim2')">Trimestre 2</button>
+    <button class="filter-btn" onclick="filter('trim3')">Trimestre 3</button>
+    <a href="#exercices" class="filter-btn" style="background: var(--success); color: white; text-decoration: none;">📝 Exercices Rapides</a>
 </div>
 
 <div class="grid">
     <div class="card trim1">
-        <div class="card-header" style="background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=400&q=80')"></div>
-        <div class="card-body">
-            <div class="date">Septembre - Octobre</div>
+        <div class="card-content">
+            <small>Septembre - Octobre</small>
             <h3>Séquence 1 : Types de discours</h3>
-            <ul class="content-list">
-                <li><i class="fas fa-book"></i> Narratif, Descriptif, Argumentatif</li>
-                <li><i class="fas fa-brain"></i> Connecteurs logiques</li>
-                <li><i class="fas fa-pen-nib"></i> Suite de récit</li>
-            </ul>
-            <a href="seq1.html" class="btn-open">Explorer le cours</a>
+            <p>Narratif, Descriptif, Argumentatif...</p>
+            <a href="seq1.html" class="btn-open">Ouvrir</a>
         </div>
     </div>
 
     <div class="card trim2">
-        <div class="card-header" style="background-image: url('https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=400&q=80')"></div>
-        <div class="card-body">
-            <div class="date">Février</div>
+        <div class="card-content">
+            <small>Février</small>
             <h3>Séquence 4 : Le Théâtre</h3>
-            <ul class="content-list">
-                <li><i class="fas fa-masks-theater"></i> Exposition & Dénouement</li>
-                <li><i class="fas fa-comments"></i> Discours rapporté</li>
-                <li><i class="fas fa-pen"></i> Produire un dialogue</li>
-            </ul>
-            <a href="seq4.html" class="btn-open">Explorer le cours</a>
+            <p>Exposition, Nœud, Dénouement...</p>
+            <a href="seq4.html" class="btn-open">Ouvrir</a>
         </div>
     </div>
 
     <div class="card trim3">
-        <div class="card-header" style="background-image: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=400&q=80')"></div>
-        <div class="card-body">
-            <div class="date">Fin Mai - Juin</div>
+        <div class="card-content">
+            <small>Fin Mai - Juin</small>
             <h3>Séquence 8 : Siècle des Lumières</h3>
-            <ul class="content-list">
-                <li><i class="fas fa-lightbulb"></i> Satire & Ironie (Voltaire)</li>
-                <li><i class="fas fa-microchip"></i> Lexique du raisonnement</li>
-                <li><i class="fas fa-feather"></i> Texte de réflexion</li>
-            </ul>
-            <a href="seq8.html" class="btn-open">Explorer le cours</a>
+            <p>Satire, Ironie, Voltaire...</p>
+            <a href="seq8.html" class="btn-open">Ouvrir</a>
         </div>
     </div>
 </div>
 
+<h2 class="section-title" id="exercices">⚡ Défi du jour : Quiz Express</h2>
+<div class="quiz-container">
+    <div class="question-box">
+        <p><strong>Question :</strong> Quel est le registre dominant dans un texte qui cherche à faire rire aux dépens de quelqu'un en disant le contraire de ce qu'on pense ?</p>
+        <div class="options">
+            <button class="option-btn" onclick="checkAns(this, false)">Le Tragique</button>
+            <button class="option-btn" onclick="checkAns(this, true)">L'Ironique</button>
+            <button class="option-btn" onclick="checkAns(this, false)">Le Lyrique</button>
+            <button class="option-btn" onclick="checkAns(this, false)">Le Pathétique</button>
+        </div>
+    </div>
+    <div id="quiz-feedback" style="text-align: center; font-weight: bold; margin-top: 10px;"></div>
+</div>
+
 <div class="social-float">
-    <a href="#" class="social-btn fb"><i class="fab fa-facebook-f"></i></a>
-    <a href="#" class="social-btn wa"><i class="fab fa-whatsapp"></i></a>
+    <a href="#" class="social-btn" style="background: #1877F2;"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="social-btn" style="background: #25D366;"><i class="fab fa-whatsapp"></i></a>
+    <a href="#" class="social-btn" style="background: #FF0000;"><i class="fab fa-youtube"></i></a>
 </div>
 
 <script>
-    // 1. Animation du menu au scroll
-    window.addEventListener('scroll', () => {
-        const header = document.getElementById('mainHeader');
-        if (window.scrollY > 50) header.classList.add('scrolled');
-        else header.classList.remove('scrolled');
-    });
+    // Filtrage des séquences
+    function filter(c) {
+        const cards = document.querySelectorAll('.card');
+        const btns = document.querySelectorAll('.filter-btn');
+        btns.forEach(b => b.classList.remove('active'));
+        if(event) event.target.classList.add('active');
 
-    // 2. Filtrage des cartes
-    function filterCards(category, btn) {
-        // Update boutons
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        // Update cartes
-        document.querySelectorAll('.card').forEach(card => {
-            if (category === 'all' || card.classList.contains(category)) {
-                card.classList.remove('hidden');
-            } else {
-                card.classList.add('hidden');
-            }
+        cards.forEach(card => {
+            card.classList.add('hidden');
+            if (c === 'all' || card.classList.contains(c)) card.classList.remove('hidden');
         });
     }
 
-    // 3. Animation d'entrée des cartes
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
-            }
-        });
-    }, { threshold: 0.1 });
+    // Logique de l'exercice
+    function checkAns(btn, isCorrect) {
+        const feedback = document.getElementById('quiz-feedback');
+        const allBtns = btn.parentElement.querySelectorAll('.option-btn');
+        
+        allBtns.forEach(b => b.disabled = true); // Désactive les boutons après clic
 
-    document.querySelectorAll('.card').forEach(card => observer.observe(card));
+        if(isCorrect) {
+            btn.classList.add('correct');
+            feedback.innerHTML = "🎉 Bravo ! C'est la bonne réponse.";
+            feedback.style.color = "var(--success)";
+        } else {
+            btn.classList.add('incorrect');
+            feedback.innerHTML = "❌ Dommage ! Réessayez au prochain tour.";
+            feedback.style.color = "var(--danger)";
+        }
+    }
 </script>
 
 </body>
