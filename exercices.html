@@ -4,86 +4,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Espace Exercices - Auto-évaluation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --success: #27ae60;
             --error: #e74c3c;
             --primary: #2c3e50;
-            --bg: #f4f7f6;
+            --accent: #3498db;
+            --bg: #f0f2f5;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-color: var(--bg);
             color: var(--primary);
             margin: 0;
-            padding: 20px;
+            padding: 0;
         }
+
+        /* --- EN-TÊTE EMBELLIE AVEC IMAGE --- */
+        .hero-banner {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), 
+                        url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--success);
+        }
+
+        .hero-banner h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .hero-banner p { font-size: 1.1rem; opacity: 0.9; }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        header {
-            text-align: center;
-            border-bottom: 3px solid var(--success);
-            margin-bottom: 30px;
+            max-width: 900px;
+            margin: -40px auto 40px; /* Chevauchement sur le hero */
+            background: transparent;
+            padding: 0 20px;
         }
 
         .nav-back {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             margin-bottom: 20px;
-            color: var(--primary);
+            color: white;
             text-decoration: none;
             font-weight: bold;
+            background: rgba(0,0,0,0.3);
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: 0.3s;
         }
+        .nav-back:hover { background: var(--accent); }
 
         .quiz-section {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
         .quiz-section h2 {
             background: var(--primary);
             color: white;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 1.2rem;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            margin-top: -45px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Images de section */
+        .section-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
 
         .question-card {
             background: #fff;
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-radius: 8px;
+            border: 1px solid #edf2f7;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            transition: 0.3s;
         }
+        .question-card:hover { border-color: var(--accent); }
 
         .options {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 12px;
+            margin-top: 20px;
         }
 
         .option-btn {
-            padding: 12px;
+            padding: 15px;
             border: 2px solid #eee;
-            border-radius: 5px;
+            border-radius: 8px;
             background: white;
             cursor: pointer;
             text-align: left;
             transition: 0.3s;
             font-size: 1rem;
+            font-family: inherit;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .option-btn:hover {
-            border-color: #3498db;
+            border-color: var(--accent);
             background: #f0f7ff;
+            transform: translateX(5px);
         }
 
         /* Classes pour le JavaScript */
@@ -91,33 +133,52 @@
             background-color: #d4edda !important;
             border-color: var(--success) !important;
             color: #155724;
+            font-weight: bold;
         }
+        .correct::after { content: "✔"; }
 
         .wrong {
             background-color: #f8d7da !important;
             border-color: var(--error) !important;
             color: #721c24;
+            font-weight: bold;
         }
+        .wrong::after { content: "✖"; }
 
         .feedback {
-            margin-top: 10px;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
             font-weight: bold;
             display: none;
+            background: #f8f9fa;
+            border-left: 4px solid #ccc;
+        }
+
+        footer {
+            padding: 40px 0;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <a href="index.html" class="nav-back">⬅ Retour au Tableau de Bord</a>
+<div class="hero-banner">
+    <div class="container" style="margin-bottom:0;">
+        <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Retour au Tableau de Bord</a>
+    </div>
+    <h1>📝 Centre d'Exercices Interactifs</h1>
+    <p>Maîtrisez les subtilités de la langue française avec la Machine à LANGUE</p>
+</div>
 
-    <header>
-        <h1>📝 Centre d'Exercices Interactifs</h1>
-        <p>Testez vos connaissances sur le programme de français</p>
-    </header>
+<div class="container">
 
     <div class="quiz-section">
-        <h2>Séquence 1 & 8 : Types de discours et Lumières</h2>
+        <h2><i class="fas fa-feather-alt"></i> Séquences 1 & 8 : Types de discours et Lumières</h2>
+        <img src="https://images.unsplash.com/photo-1513001900722-370f803f498d?auto=format&fit=crop&w=800&q=80" alt="Lumières" class="section-img">
         
         <div class="question-card">
             <p><strong>1. Quelle est la fonction principale d'un plaidoyer ?</strong></p>
@@ -141,7 +202,8 @@
     </div>
 
     <div class="quiz-section">
-        <h2>Séquence 9 : Roman Maghrébin (Khaïr-Eddine)</h2>
+        <h2><i class="fas fa-mosque"></i> Séquence 9 : Roman Maghrébin (Khaïr-Eddine)</h2>
+        <img src="https://images.unsplash.com/photo-1541013147131-081498e29080?auto=format&fit=crop&w=800&q=80" alt="Maghreb" class="section-img">
         
         <div class="question-card">
             <p><strong>3. Quel objet symbolise l'ouverture sur le monde moderne pour le vieux couple ?</strong></p>
@@ -164,30 +226,32 @@
         </div>
     </div>
 
-    <footer>
-        <p style="text-align:center; color:#7f8c8d;">Machine à LANGUE - Auto-correction intégrée</p>
-    </footer>
 </div>
+
+<footer>
+    <p><i class="fas fa-robot"></i> Machine à LANGUE - Auto-correction intégrée</p>
+    <p style="font-size:0.8rem; opacity:0.7; margin-top:10px;">Mohamed EL KHOUMSSI - Enseignant de Français</p>
+</footer>
 
 <script>
     function checkAnswer(button, isCorrect, message) {
-        // Trouver le conteneur de la question
         const card = button.closest('.question-card');
         const feedback = card.querySelector('.feedback');
         const allButtons = card.querySelectorAll('.option-btn');
 
-        // Désactiver tous les boutons de cette question après le clic
         allButtons.forEach(btn => btn.style.pointerEvents = 'none');
 
         if (isCorrect) {
             button.classList.add('correct');
             feedback.style.color = '#27ae60';
+            feedback.style.borderLeftColor = '#27ae60';
         } else {
             button.classList.add('wrong');
             feedback.style.color = '#e74c3c';
-            // Montrer aussi la bonne réponse
+            feedback.style.borderLeftColor = '#e74c3c';
+            
             allButtons.forEach(btn => {
-                if (btn.innerText.includes('Correct') || btn.getAttribute('onclick').includes('true')) {
+                if (btn.getAttribute('onclick').includes('true')) {
                     btn.classList.add('correct');
                 }
             });
