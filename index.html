@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Machine à LANGUE | Sommaire des Séquences</title>
+    <title>Machine à LANGUE | Focus Français</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -12,6 +12,7 @@
         :root {
             --primary: #2c3e50;
             --accent: #3498db;
+            --success: #27ae60;
             --trim1: #27ae60;
             --trim2: #f39c12;
             --trim3: #e74c3c;
@@ -21,65 +22,79 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--bg); color: var(--primary); scroll-behavior: smooth; padding-top: 70px; }
 
-        /* --- NAVIGATION PROFESSIONNELLE AVEC DROPDOWN --- */
+        /* --- NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; background: var(--primary);
             display: flex; justify-content: space-between; align-items: center;
-            padding: 0 50px; height: 70px; z-index: 2000; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 0 40px; height: 75px; z-index: 2000; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .logo { color: white; font-weight: 700; font-size: 1.2rem; text-decoration: none; }
 
-        .nav-menu { display: flex; list-style: none; align-items: center; }
-        .nav-item { position: relative; padding: 25px 15px; }
+        .nav-menu { display: flex; list-style: none; align-items: center; gap: 10px; }
+        .nav-item { position: relative; padding: 15px 10px; }
         .nav-link { color: white; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; cursor: pointer; }
         .nav-link:hover { color: var(--accent); }
 
-        /* Style du menu déroulant (Dropdown) */
+        /* Dropdown des 10 séquences */
         .dropdown {
             position: absolute; top: 70px; left: 0; background: white;
-            width: 280px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 280px; box-shadow: 0 10px 25px rgba(0,0,0,0.15);
             border-radius: 0 0 10px 10px; display: none; padding: 10px 0;
+            border-top: 3px solid var(--accent);
         }
         .nav-item:hover .dropdown { display: block; }
         .dropdown-item { 
             padding: 10px 20px; color: var(--primary); text-decoration: none; 
-            display: block; font-size: 0.85rem; border-bottom: 1px solid #eee;
+            display: block; font-size: 0.85rem; border-bottom: 1px solid #f0f0f0;
+            transition: 0.2s;
         }
-        .dropdown-item:hover { background: #f0f7ff; color: var(--accent); }
-        .dropdown-item:last-child { border-bottom: none; }
+        .dropdown-item:hover { background: #f8fbff; color: var(--accent); padding-left: 25px; }
 
-        /* --- ENTÊTE --- */
+        /* Bouton Spécial Exercices (La "Route") */
+        .btn-route-ex {
+            background: var(--success);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-route-ex:hover { background: #219150; transform: scale(1.05); }
+
+        /* --- HEADER & GRILLE --- */
         header {
-            height: 300px;
+            height: 350px;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                         url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1350&q=80') center/cover;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            color: white; text-align: center; margin-bottom: 30px;
+            color: white; text-align: center;
         }
 
-        /* --- GRILLE DES CARTES --- */
-        .grid {
-            max-width: 1200px; margin: 0 auto;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px; padding: 20px;
-        }
-        .card { background: white; border-radius: 12px; padding: 20px; border-left: 8px solid #ccc; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .grid { max-width: 1200px; margin: 40px auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; padding: 20px; }
+        .card { background: white; border-radius: 15px; padding: 25px; border-left: 10px solid #ccc; box-shadow: 0 8px 20px rgba(0,0,0,0.05); transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
         .trim1 { border-left-color: var(--trim1); }
         .trim2 { border-left-color: var(--trim2); }
         .trim3 { border-left-color: var(--trim3); }
         
-        .hidden { display: none; }
+        .content-list { list-style: none; margin: 15px 0; font-size: 0.9rem; color: #555; }
+        .content-list li { margin-bottom: 5px; }
 
-        /* --- BOUTONS SOCIAUX --- */
-        .social-bar { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; }
-        .s-btn { width: 45px; height: 45px; border-radius: 50%; color: white; display: flex; justify-content: center; align-items: center; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        /* --- CONTACT FLOTTANT --- */
+        .social-float { position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column; gap: 12px; }
+        .s-link { width: 50px; height: 50px; border-radius: 50%; color: white; display: flex; justify-content: center; align-items: center; text-decoration: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="#" class="logo">MACHINE À LANGUE</a>
+    <a href="#" class="logo"><i class="fas fa-brain"></i> MACHINE À LANGUE</a>
     <ul class="nav-menu">
         <li class="nav-item">
             <span class="nav-link">📚 SÉQUENCES <i class="fas fa-chevron-down"></i></span>
@@ -96,38 +111,124 @@
                 <a href="#seq10" class="dropdown-item">S10 : Roman réaliste XIXe</a>
             </div>
         </li>
-        <li class="nav-item"><a href="#quiz" class="nav-link">QUIZ</a></li>
+        <li class="nav-item">
+            <a href="exercices.html" class="btn-route-ex">
+                <i class="fas fa-edit"></i> EXERCICES
+            </a>
+        </li>
     </ul>
 </nav>
 
 <header>
     <h1>Focus Français</h1>
-    <p>Accédez directement à vos séquences via le menu ci-dessus.</p>
+    <p>Planification annuelle & Stratégies d'apprentissage interactives</p>
 </header>
 
 <div class="grid">
     <div id="seq1" class="card trim1">
+        <small>Septembre - Octobre</small>
         <h3>S1 : Types de discours</h3>
-        <p>Étude des discours narratifs, descriptifs et argumentatifs.</p>
-        <a href="seq1.html" style="color: var(--accent); text-decoration: none; font-weight: bold;">Ouvrir le cours →</a>
+        <ul class="content-list">
+            <li>• Narratif, Descriptif, Argumentatif</li>
+            <li>• Connecteurs & Phrases</li>
+        </ul>
+        <a href="seq1.html" style="color: var(--accent); text-decoration: none; font-weight: bold;">Accéder au cours →</a>
     </div>
 
     <div id="seq2" class="card trim1">
+        <small>Novembre - Décembre</small>
         <h3>S2 : Récit réaliste</h3>
-        <p>Focalisations, portrait et expansion nominale.</p>
-        <a href="seq2.html" style="color: var(--accent); text-decoration: none; font-weight: bold;">Ouvrir le cours →</a>
+        <ul class="content-list">
+            <li>• Caractéristiques & Focalisations</li>
+            <li>• Portrait & Poésie</li>
+        </ul>
+        <a href="seq2.html" style="color: var(--accent); text-decoration: none; font-weight: bold;">Accéder au cours →</a>
+    </div>
+
+    <div id="seq3" class="card trim2">
+        <small>Janvier</small>
+        <h3>S3 : Récit fantastique</h3>
+        <ul class="content-list">
+            <li>• Surnaturel & Suspense</li>
+            <li>• Complétive & Participe passé</li>
+        </ul>
+        <a href="seq3.html" style="color: var(--accent); text-decoration: none; font-weight: bold;">Accéder au cours →</a>
+    </div>
+
+    <div id="seq4" class="card trim2">
+        <small>Février</small>
+        <h3>S4 : Le Théâtre</h3>
+        <ul class="content-list">
+            <li>• Exposition & Dénouement</li>
+            <li>• Discours rapporté</li>
+        </ul>
+        <a href="seq4.html" style="color: var(--accent); text-decoration: none; font-weight: bold;">Accéder au cours →</a>
+    </div>
+
+    <div id="seq5" class="card trim2">
+        <small>Mars</small>
+        <h3>S5 : L'autobiographie</h3>
+        <ul class="content-list">
+            <li>• Pacte, Vérité & Journal intime</li>
+            <li>• Écriture de soi</li>
+        </ul>
+        <a href="seq5.html" style="color: var(--accent); text-decoration: none; font-weight: bold;">Accéder au cours →</a>
+    </div>
+
+    <div id="seq6" class="card trim3">
+        <small>Avril</small>
+        <h3>S6 : Science-fiction</h3>
+        <ul class="content-list">
+            <li>• Espace-temps & Insolite</li>
+            <li>• Nominalisation & Registres</li>
+        </ul>
+        <a href="seq6.html" style="color: var(--accent); text-decoration: none; font-weight: bold;">Accéder au cours →</a>
+    </div>
+
+    <div id="seq7" class="card trim3">
+        <small>Mai</small>
+        <h3>S7 : Récit argumentatif</h3>
+        <ul class="content-list">
+            <li>• Plaidoyer & Réquisitoire</li>
+            <li>• Registre tragique</li>
+        </ul>
+        <a href="seq7.html" style="color: var(--accent); text-decoration: none; font-weight: bold;">Accéder au cours →</a>
+    </div>
+
+    <div id="seq8" class="card trim3">
+        <small>Fin Mai - Juin</small>
+        <h3>S8 : Siècle des Lumières</h3>
+        <ul class="content-list">
+            <li>• Satire, Ironie & Voltaire</li>
+            <li>• Lexique du raisonnement</li>
+        </ul>
+        <a href="seq8.html" style="color: var(--accent); text-decoration: none; font-weight: bold;">Accéder au cours →</a>
+    </div>
+
+    <div id="seq9" class="card trim3">
+        <small>Juin</small>
+        <h3>S9 : Roman maghrébin</h3>
+        <ul class="content-list">
+            <li>• Tradition / Modernité</li>
+            <li>• Description valorisante</li>
+        </ul>
+        <a href="seq9.html" style="color: var(--accent); text-decoration: none; font-weight: bold;">Accéder au cours →</a>
     </div>
 
     <div id="seq10" class="card trim3">
+        <small>Fin d'année</small>
         <h3>S10 : Roman réaliste XIXe</h3>
-        <p>Analyse de la société, de l'argent et du réalisme.</p>
-        <a href="seq10.html" style="color: var(--accent); text-decoration: none; font-weight: bold;">Ouvrir le cours →</a>
+        <ul class="content-list">
+            <li>• Bourgeoisie & Argent</li>
+            <li>• Récit complexe</li>
+        </ul>
+        <a href="seq10.html" style="color: var(--accent); text-decoration: none; font-weight: bold;">Accéder au cours →</a>
     </div>
 </div>
 
-<div class="social-bar">
-    <a href="#" class="s-btn" style="background:#1877F2"><i class="fab fa-facebook-f"></i></a>
-    <a href="#" class="s-btn" style="background:#25D366"><i class="fab fa-whatsapp"></i></a>
+<div class="social-float">
+    <a href="#" class="s-link" style="background:#1877F2"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="s-link" style="background:#25D366"><i class="fab fa-whatsapp"></i></a>
 </div>
 
 </body>
