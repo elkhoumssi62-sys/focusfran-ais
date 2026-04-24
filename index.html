@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Machine à LANGUE | Plateforme Pédagogique</title>
+    <title>Machine à LANGUE | Focus Français</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -12,20 +12,19 @@
         :root {
             --primary: #2c3e50;
             --accent: #3498db;
-            --success: #27ae60;
-            --warning: #f39c12;
-            --danger: #e74c3c;
-            --bg: #f0f2f5;
-            --glass: rgba(255, 255, 255, 0.9);
+            --trim1: #27ae60;
+            --trim2: #f39c12;
+            --trim3: #e74c3c;
+            --bg: #f8f9fa;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--bg); color: var(--primary); scroll-behavior: smooth; }
 
-        /* --- EN-TÊTE MAGNIFIQUE --- */
+        /* --- ENTÊTE SUBLIME --- */
         header {
-            height: 450px;
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), 
+            height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                         url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1350&q=80') center/cover;
             display: flex;
             flex-direction: column;
@@ -33,151 +32,249 @@
             align-items: center;
             color: white;
             text-align: center;
-            border-bottom: 8px solid var(--accent);
             padding: 20px;
         }
 
-        header h1 { font-size: 3.5rem; font-weight: 700; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); margin-bottom: 10px; }
-        header p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; }
+        header h1 { font-size: 3.2rem; font-weight: 700; margin-bottom: 10px; text-shadow: 2px 2px 8px rgba(0,0,0,0.5); }
+        header p { font-size: 1.1rem; max-width: 700px; opacity: 0.9; }
 
-        /* --- NAVIGATION FIXE --- */
-        .nav-bar {
+        /* --- NAVIGATION STICKY --- */
+        .nav-sticky {
             position: sticky; top: 0; background: var(--primary);
             padding: 15px 0; display: flex; justify-content: center;
-            gap: 15px; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            gap: 12px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            flex-wrap: wrap;
         }
 
-        /* --- FILTRES & BOUTONS --- */
-        .filter-btn {
-            padding: 8px 18px; border: none; border-radius: 20px;
+        .nav-btn {
+            padding: 8px 18px; border: none; border-radius: 25px;
             cursor: pointer; background: white; font-weight: 600; transition: 0.3s;
+            font-size: 0.9rem;
         }
-        .filter-btn.active { background: var(--accent); color: white; }
-        .filter-btn:hover { background: #eee; transform: translateY(-2px); }
+        .nav-btn.active { background: var(--accent); color: white; }
+        .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
 
-        /* --- SECTION EXERCICES --- */
-        .section-title { text-align: center; margin: 50px 0 30px; font-size: 2rem; color: var(--primary); }
-        .quiz-container {
-            max-width: 800px; margin: 0 auto 50px; background: white;
-            padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-        .question-box { margin-bottom: 20px; padding: 15px; border-radius: 10px; background: #f9f9f9; }
-        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-        .option-btn { 
-            padding: 10px; border: 2px solid #ddd; border-radius: 8px; 
-            background: white; cursor: pointer; transition: 0.3s; font-family: inherit;
-        }
-        .option-btn:hover { border-color: var(--accent); background: #ebf5ff; }
-        .correct { background: var(--success) !important; color: white; border-color: var(--success) !important; }
-        .incorrect { background: var(--danger) !important; color: white; border-color: var(--danger) !important; }
-
-        /* --- GRILLE DES SÉQUENCES --- */
+        /* --- GRILLE DES 10 SÉQUENCES --- */
         .grid {
-            max-width: 1200px; margin: 0 auto 50px;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            max-width: 1200px; margin: 40px auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px; padding: 20px;
         }
+
         .card {
             background: white; border-radius: 15px; overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s;
-            border-left: 10px solid #ccc;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05); transition: 0.4s;
+            border-left: 10px solid #ccc; position: relative;
         }
-        .card:hover { transform: translateY(-10px); }
-        .trim1 { border-left-color: var(--success); }
-        .trim2 { border-left-color: var(--warning); }
-        .trim3 { border-left-color: var(--danger); }
-        .card-content { padding: 20px; }
-        .card h3 { margin-bottom: 10px; font-size: 1.1rem; }
-        .btn-open {
-            display: inline-block; margin-top: 15px; padding: 8px 20px;
-            background: var(--primary); color: white; text-decoration: none;
-            border-radius: 5px; font-size: 0.9rem;
-        }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); }
 
-        /* --- BOUTONS FLOTTANTS --- */
-        .social-float {
-            position: fixed; bottom: 20px; right: 20px;
-            display: flex; flex-direction: column; gap: 10px;
+        .card.trim1 { border-left-color: var(--trim1); }
+        .card.trim2 { border-left-color: var(--trim2); }
+        .card.trim3 { border-left-color: var(--trim3); }
+
+        .card-body { padding: 25px; }
+        .date-tag { font-size: 0.75rem; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        .card h3 { margin: 10px 0; color: var(--primary); font-size: 1.2rem; }
+        .content-list { list-style: none; padding: 0; font-size: 0.9rem; color: #555; }
+        .content-list li { margin-bottom: 6px; display: flex; align-items: center; }
+        .content-list li i { margin-right: 8px; color: var(--accent); font-size: 0.8rem; }
+
+        .btn-open {
+            display: inline-block; margin-top: 15px; padding: 8px 22px;
+            background: var(--primary); color: white; text-decoration: none;
+            border-radius: 6px; font-weight: 600; font-size: 0.85rem; transition: 0.3s;
         }
-        .social-btn {
-            width: 50px; height: 50px; border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            color: white; font-size: 1.3rem; text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: 0.3s;
-        }
-        .social-btn:hover { transform: scale(1.1); }
+        .btn-open:hover { background: var(--accent); }
+
+        /* --- SECTION QUIZ --- */
+        .quiz-section { max-width: 800px; margin: 50px auto; background: white; padding: 35px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.05); }
+        .quiz-title { text-align: center; margin-bottom: 25px; color: var(--accent); }
+        .question { font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; }
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .opt-btn { padding: 12px; border: 2px solid #eee; border-radius: 10px; background: none; cursor: pointer; font-family: inherit; transition: 0.3s; }
+        .opt-btn:hover { border-color: var(--accent); background: #f0f7ff; }
+        .correct { background: var(--trim1) !important; color: white; border-color: var(--trim1) !important; }
+        .wrong { background: var(--trim3) !important; color: white; border-color: var(--trim3) !important; }
+
+        /* --- CONTACT FLOTTANT --- */
+        .float-contact { position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 2000; }
+        .s-link { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 1.4rem; text-decoration: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: 0.3s; }
+        .s-link:hover { transform: scale(1.1); }
+
         .hidden { display: none; }
+        @media (max-width: 768px) { .options { grid-template-columns: 1fr; } header h1 { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
 
 <header>
     <h1>Focus Français</h1>
-    <p>La Machine à LANGUE : Planification annuelle, ressources linguistiques et stratégies digitales.</p>
+    <p>Plateforme interactive de planification annuelle et ressources pour l'enseignement du Français.</p>
 </header>
 
-<div class="nav-bar">
-    <button class="filter-btn active" onclick="filter('all')">Tout</button>
-    <button class="filter-btn" onclick="filter('trim1')">Trimestre 1</button>
-    <button class="filter-btn" onclick="filter('trim2')">Trimestre 2</button>
-    <button class="filter-btn" onclick="filter('trim3')">Trimestre 3</button>
-    <a href="#exercices" class="filter-btn" style="background: var(--success); color: white; text-decoration: none;">📝 Exercices Rapides</a>
+<div class="nav-sticky">
+    <button class="nav-btn active" onclick="filter('all')">Tout</button>
+    <button class="nav-btn" onclick="filter('trim1')">Trimestre 1</button>
+    <button class="nav-btn" onclick="filter('trim2')">Trimestre 2</button>
+    <button class="nav-btn" onclick="filter('trim3')">Trimestre 3</button>
+    <a href="#quiz" class="nav-btn" style="background: var(--trim1); color: white; text-decoration: none;">📝 Quiz Rapide</a>
 </div>
 
 <div class="grid">
     <div class="card trim1">
-        <div class="card-content">
-            <small>Septembre - Octobre</small>
-            <h3>Séquence 1 : Types de discours</h3>
-            <p>Narratif, Descriptif, Argumentatif...</p>
+        <div class="card-body">
+            <div class="date-tag">Séquence 1 | Sept - Oct</div>
+            <h3>Types de discours</h3>
+            <ul class="content-list">
+                <li><i class="fas fa-check"></i> Narratif, Descriptif, Argumentatif</li>
+                <li><i class="fas fa-check"></i> Types de phrases, Connecteurs</li>
+                <li><i class="fas fa-check"></i> Suite de récit, Opinion</li>
+            </ul>
             <a href="seq1.html" class="btn-open">Ouvrir</a>
         </div>
     </div>
 
+    <div class="card trim1">
+        <div class="card-body">
+            <div class="date-tag">Séquence 2 | Nov - Déc</div>
+            <h3>Le Récit réaliste</h3>
+            <ul class="content-list">
+                <li><i class="fas fa-check"></i> Focalisations, Caractéristiques</li>
+                <li><i class="fas fa-check"></i> Expansion nominale, Relative</li>
+                <li><i class="fas fa-check"></i> Portrait, Ellipse, Ode</li>
+            </ul>
+            <a href="seq2.html" class="btn-open">Ouvrir</a>
+        </div>
+    </div>
+
     <div class="card trim2">
-        <div class="card-content">
-            <small>Février</small>
-            <h3>Séquence 4 : Le Théâtre</h3>
-            <p>Exposition, Nœud, Dénouement...</p>
+        <div class="card-body">
+            <div class="date-tag">Séquence 3 | Janvier</div>
+            <h3>Récit fantastique</h3>
+            <ul class="content-list">
+                <li><i class="fas fa-check"></i> Surnaturel, Suspense, Sonnet</li>
+                <li><i class="fas fa-check"></i> Complétive, Participe passé</li>
+                <li><i class="fas fa-check"></i> Atmosphère, Réécriture</li>
+            </ul>
+            <a href="seq3.html" class="btn-open">Ouvrir</a>
+        </div>
+    </div>
+
+    <div class="card trim2">
+        <div class="card-body">
+            <div class="date-tag">Séquence 4 | Février</div>
+            <h3>Le Théâtre</h3>
+            <ul class="content-list">
+                <li><i class="fas fa-check"></i> Exposition, Nœud, Dénouement</li>
+                <li><i class="fas fa-check"></i> Discours rapporté</li>
+                <li><i class="fas fa-check"></i> Produire un dialogue</li>
+            </ul>
             <a href="seq4.html" class="btn-open">Ouvrir</a>
         </div>
     </div>
 
+    <div class="card trim2">
+        <div class="card-body">
+            <div class="date-tag">Séquence 5 | Mars</div>
+            <h3>L’autobiographie</h3>
+            <ul class="content-list">
+                <li><i class="fas fa-check"></i> Pacte autobiographique, Journal</li>
+                <li><i class="fas fa-check"></i> Discours indirect libre</li>
+                <li><i class="fas fa-check"></i> Écriture de soi, Résumé</li>
+            </ul>
+            <a href="seq5.html" class="btn-open">Ouvrir</a>
+        </div>
+    </div>
+
     <div class="card trim3">
-        <div class="card-content">
-            <small>Fin Mai - Juin</small>
-            <h3>Séquence 8 : Siècle des Lumières</h3>
-            <p>Satire, Ironie, Voltaire...</p>
+        <div class="card-body">
+            <div class="date-tag">Séquence 6 | Avril</div>
+            <h3>Science-fiction</h3>
+            <ul class="content-list">
+                <li><i class="fas fa-check"></i> Espace-temps, Surréalisme</li>
+                <li><i class="fas fa-check"></i> Nominalisation, Registres</li>
+                <li><i class="fas fa-check"></i> Récits imaginaires</li>
+            </ul>
+            <a href="seq6.html" class="btn-open">Ouvrir</a>
+        </div>
+    </div>
+
+    <div class="card trim3">
+        <div class="card-body">
+            <div class="date-tag">Séquence 7 | Mai</div>
+            <h3>Récit argumentatif</h3>
+            <ul class="content-list">
+                <li><i class="fas fa-check"></i> Plaidoyer et Réquisitoire</li>
+                <li><i class="fas fa-check"></i> Registre tragique et satirique</li>
+                <li><i class="fas fa-check"></i> Texte argumentatif complet</li>
+            </ul>
+            <a href="seq7.html" class="btn-open">Ouvrir</a>
+        </div>
+    </div>
+
+    <div class="card trim3">
+        <div class="card-body">
+            <div class="date-tag">Séquence 8 | Fin Mai - Juin</div>
+            <h3>Siècle des Lumières</h3>
+            <ul class="content-list">
+                <li><i class="fas fa-check"></i> Satire, Ironie (Voltaire)</li>
+                <li><i class="fas fa-check"></i> Lexique du raisonnement</li>
+                <li><i class="fas fa-check"></i> Texte de réflexion</li>
+            </ul>
             <a href="seq8.html" class="btn-open">Ouvrir</a>
         </div>
     </div>
-</div>
 
-<h2 class="section-title" id="exercices">⚡ Défi du jour : Quiz Express</h2>
-<div class="quiz-container">
-    <div class="question-box">
-        <p><strong>Question :</strong> Quel est le registre dominant dans un texte qui cherche à faire rire aux dépens de quelqu'un en disant le contraire de ce qu'on pense ?</p>
-        <div class="options">
-            <button class="option-btn" onclick="checkAns(this, false)">Le Tragique</button>
-            <button class="option-btn" onclick="checkAns(this, true)">L'Ironique</button>
-            <button class="option-btn" onclick="checkAns(this, false)">Le Lyrique</button>
-            <button class="option-btn" onclick="checkAns(this, false)">Le Pathétique</button>
+    <div class="card trim3">
+        <div class="card-body">
+            <div class="date-tag">Séquence 9 | Roman maghrébin</div>
+            <h3>Tradition & Modernité</h3>
+            <ul class="content-list">
+                <li><i class="fas fa-check"></i> Étude d'œuvres (Khair-Eddine)</li>
+                <li><i class="fas fa-check"></i> Dialogue et Description</li>
+                <li><i class="fas fa-check"></i> Récit de vie simple</li>
+            </ul>
+            <a href="seq9.html" class="btn-open">Ouvrir</a>
         </div>
     </div>
-    <div id="quiz-feedback" style="text-align: center; font-weight: bold; margin-top: 10px;"></div>
+
+    <div class="card trim3">
+        <div class="card-body">
+            <div class="date-tag">Séquence 10 | Juin</div>
+            <h3>Roman réaliste XIXe</h3>
+            <ul class="content-list">
+                <li><i class="fas fa-check"></i> Bourgeoisie, Argent, Réel</li>
+                <li><i class="fas fa-check"></i> Lexique valorisant</li>
+                <li><i class="fas fa-check"></i> Récit complexe, Résumé</li>
+            </ul>
+            <a href="seq10.html" class="btn-open">Ouvrir</a>
+        </div>
+    </div>
 </div>
 
-<div class="social-float">
-    <a href="#" class="social-btn" style="background: #1877F2;"><i class="fab fa-facebook-f"></i></a>
-    <a href="#" class="social-btn" style="background: #25D366;"><i class="fab fa-whatsapp"></i></a>
-    <a href="#" class="social-btn" style="background: #FF0000;"><i class="fab fa-youtube"></i></a>
+<div class="quiz-section" id="quiz">
+    <h2 class="quiz-title"><i class="fas fa-bolt"></i> Challenge Interactif</h2>
+    <div class="question">Dans un récit fantastique, quel élément provoque généralement la rupture du quotidien ?</div>
+    <div class="options">
+        <button class="opt-btn" onclick="check(this, false)">Une description réaliste</button>
+        <button class="opt-btn" onclick="check(this, true)">Un événement surnaturel</button>
+        <button class="opt-btn" onclick="check(this, false)">Un portrait moral</button>
+        <button class="opt-btn" onclick="check(this, false)">Un connecteur logique</button>
+    </div>
+    <div id="feedback" style="text-align: center; margin-top: 15px; font-weight: 600;"></div>
+</div>
+
+<div class="float-contact">
+    <a href="#" class="s-link" style="background:#1877F2"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="s-link" style="background:#25D366"><i class="fab fa-whatsapp"></i></a>
+    <a href="#" class="s-link" style="background:#FF0000"><i class="fab fa-youtube"></i></a>
 </div>
 
 <script>
-    // Filtrage des séquences
+    // Filtre des trimestres
     function filter(c) {
         const cards = document.querySelectorAll('.card');
-        const btns = document.querySelectorAll('.filter-btn');
+        const btns = document.querySelectorAll('.nav-btn');
         btns.forEach(b => b.classList.remove('active'));
         if(event) event.target.classList.add('active');
 
@@ -187,21 +284,20 @@
         });
     }
 
-    // Logique de l'exercice
-    function checkAns(btn, isCorrect) {
-        const feedback = document.getElementById('quiz-feedback');
-        const allBtns = btn.parentElement.querySelectorAll('.option-btn');
-        
-        allBtns.forEach(b => b.disabled = true); // Désactive les boutons après clic
+    // Fonction Quiz
+    function check(btn, isCorrect) {
+        const feedback = document.getElementById('feedback');
+        const all = btn.parentElement.querySelectorAll('.opt-btn');
+        all.forEach(b => b.disabled = true);
 
         if(isCorrect) {
             btn.classList.add('correct');
-            feedback.innerHTML = "🎉 Bravo ! C'est la bonne réponse.";
-            feedback.style.color = "var(--success)";
+            feedback.innerHTML = "✨ Excellent ! Vous maîtrisez le fantastique.";
+            feedback.style.color = "var(--trim1)";
         } else {
-            btn.classList.add('incorrect');
-            feedback.innerHTML = "❌ Dommage ! Réessayez au prochain tour.";
-            feedback.style.color = "var(--danger)";
+            btn.classList.add('wrong');
+            feedback.innerHTML = "🤔 Pas tout à fait. Relisez la séquence 3 !";
+            feedback.style.color = "var(--trim3)";
         }
     }
 </script>
