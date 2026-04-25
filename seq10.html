@@ -3,144 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Séquence 10 : Le Roman Réaliste du XIXe siècle</title>
+    <title>Séquence 10 - Le Roman Réaliste au XIXe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #2c3e50; /* Bleu nuit sérieux */
+            --accent: #d4af37;  /* Or pour symboliser l'argent au XIXe */
+            --text: #333;
+            --bg: #fdfcf9;      /* Couleur papier ancien très clair */
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Times New Roman', serif; /* Rappelle l'aspect "livre classique" */
-            line-height: 1.6;
-            color: #2c3e50;
-            margin: 0;
-            padding: 20px;
-            background-color: #f2f2f2;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding-bottom: 50px;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 5px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            border-top: 10px solid #2c3e50;
-        }
+
+        /* --- EN-TÊTE GRANDEUR NATURE --- */
         header {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1544411047-c491574abb22?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
             text-align: center;
-            border-bottom: 2px solid #eee;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-        }
-        .nav-back {
-            color: #2c3e50;
-            text-decoration: none;
-            font-weight: bold;
-            font-family: Arial, sans-serif;
-        }
-        h1 { color: #1a1a1a; font-size: 2rem; text-transform: uppercase; }
-        h2 { 
-            border-bottom: 2px solid #2c3e50; 
-            padding-bottom: 5px; 
-            color: #2c3e50;
-            font-variant: small-caps;
-        }
-        .concept-box {
-            background: #f9f9f9;
-            border: 1px solid #ddd;
             padding: 20px;
-            margin: 20px 0;
+            border-bottom: 8px solid var(--accent);
         }
+
+        header h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            max-width: 600px;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- STYLISATION DES GRANDES SECTIONS --- */
+        .main-section {
+            background: var(--white);
+            margin: -100px auto 60px; /* Chevauchement sur le header */
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .main-section { padding: 30px; margin-top: -50px; }
+            header h1 { font-size: 2.5rem; }
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+            border-left: 5px solid var(--accent);
+            padding-left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .subsection { margin-bottom: 40px; }
+        .subsection-title {
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* --- STYLISATION DES LISTES DE CONTENU --- */
+        .content-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .content-list li {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
+        .content-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-color: var(--accent);
+        }
+
+        .content-list li strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        /* --- LEXIQUE (COLORATION) --- */
         .lexique-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 30px;
+            margin-top: 30px;
         }
-        .valorisant { border-top: 4px solid #27ae60; padding: 15px; background: #f0fff0; }
-        .devalorisant { border-top: 4px solid #e74c3c; padding: 15px; background: #fff0f0; }
-        .methodo {
-            background: #eef2f3;
-            padding: 20px;
-            border-left: 5px solid #2c3e50;
+
+        @media (max-width: 768px) { .lexique-grid { grid-template-columns: 1fr; } }
+
+        .lexique-box {
+            padding: 25px;
+            border-radius: 10px;
+            border-top: 5px solid #ccc;
         }
-        ul { padding-left: 20px; }
-        .footer { text-align: center; margin-top: 40px; font-size: 0.8rem; color: #7f8c8d; }
+        .lexique-box.valorisant { border-top-color: var(--success); background-color: #f0fff4; }
+        .lexique-box.devalorisant { border-top-color: var(--error); background-color: #fff5f5; }
+
+        .lexique-box h4 { margin-bottom: 10px; color: var(--primary); }
+        .adjectifs {
+            font-style: italic;
+            color: #555;
+            margin: 10px 0;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* --- IMAGES D'AMBIANCE --- */
+        .ambient-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: var(--shadow);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
     </style>
 </head>
 <body>
 
+<header>
+    <h1>FIN D'ANNÉE</h1>
+    <p>SÉQUENCE 10 : Le Roman Réaliste au XIXe Siècle. L'art de peindre la société telle qu'elle est.</p>
+</header>
+
 <div class="container">
-    <a href="index.html" class="nav-back">« Retour au Sommaire Annuel</a>
+    <div class="main-section">
 
-    <header>
-        <p><strong>FIN D'ANNÉE - SÉQUENCE 10</strong></p>
-        <h1>Le Roman Réaliste au XIXe Siècle</h1>
-        <p><em>L'art de peindre la société telle qu'elle est</em></p>
-    </header>
+        <section class="subsection">
+            <h2 class="section-title"><i class="fas fa-book-open"></i> 📖 Réception de l’écrit : La Société au Scalpel</h2>
+            
+            <div class="subsection-content">
+                <h3 class="subsection-title">L'Effet de Réel</h3>
+                <p>Le réalisme cherche à faire oublier que le texte est une fiction. Les auteurs utilisent :</p>
+                
+                <img src="https://images.unsplash.com/photo-1585829365291-1782bd0397e7?auto=format&fit=crop&w=1000&q=80" alt="Bureau d'écrivain 19ème" class="ambient-img">
 
-    <section>
-        <h2>📖 Réception de l’écrit : La Société au Scalpel</h2>
-        <div class="concept-box">
-            <h3>L'Effet de Réel</h3>
-            <p>Le réalisme cherche à faire oublier que le texte est une fiction. Les auteurs utilisent :</p>
-            <ul>
-                <li><strong>La précision des descriptions :</strong> Objets, vêtements, décors précis.</li>
-                <li><strong>L'ancrage géographique :</strong> Utilisation de vrais noms de rues ou de villes (ex: Paris).</li>
-                <li><strong>Le poids de l'argent :</strong> Dans le monde réaliste, chaque ambition a un prix et chaque personnage est défini par sa fortune.</li>
-            </ul>
-        </div>
-        
-        <div class="concept-box">
-            <h3>Thèmes Sociaux</h3>
-            <ul>
+                <ul class="content-list">
+                    <li><strong>La précision des descriptions :</strong> Objets, vêtements, décors précis.</li>
+                    <li><strong>L'ancrage géographique :</strong> Utilisation de vrais noms de rues ou de villes (ex: Paris).</li>
+                    <li><strong>Le poids de l'argent :</strong> Dans le monde réaliste, chaque ambition a un prix et chaque personnage est défini par sa fortune.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="subsection">
+            <h3 class="subsection-title">Thèmes Sociaux</h3>
+            <ul class="content-list">
                 <li><strong>L'ascension sociale :</strong> Le désir de la petite bourgeoisie de monter vers la haute société.</li>
                 <li><strong>La puissance de l'argent :</strong> L'argent est le moteur des actions, des mariages et des trahisons.</li>
                 <li><strong>La hiérarchie :</strong> Opposition entre les salons luxueux et la misère des quartiers populaires.</li>
             </ul>
-        </div>
-    </section>
+        </section>
 
-    <section>
-        <h2>🧠 Langue : Le Jugement par le Lexique</h2>
-        <p>Le narrateur réaliste utilise souvent un vocabulaire orienté pour guider le regard du lecteur :</p>
-        <div class="lexique-grid">
-            <div class="valorisant">
-                <h3>Lexique Valorisant</h3>
-                <p>Utilisé pour l'élégance, la noblesse de cœur ou le luxe raffiné.</p>
-                <ul>
-                    <li><em>Adjectifs :</em> Distingué, somptueux, noble, éclatant.</li>
-                    <li><em>But :</em> Créer de l'admiration ou de l'empathie.</li>
+        <img src="https://images.unsplash.com/photo-1544411047-c491574abb22?auto=format&fit=crop&w=1000&q=80" alt="Hiérarchie sociale 19ème" class="ambient-img">
+
+        <section class="subsection">
+            <h2 class="section-title"><i class="fas fa-brain"></i> 🧠 Langue : Le Jugement par le Lexique</h2>
+            <p>Le narrateur réaliste utilise souvent un vocabulaire orienté pour guider le regard du lecteur :</p>
+            
+            <div class="lexique-grid">
+                <div class="lexique-box valorisant">
+                    <h4>Lexique Valorisant</h4>
+                    <p>Utilisé pour l'élégance, la noblesse de cœur ou le luxe raffiné.</p>
+                    <p class="adjectifs">Adjectifs : Distingué, somptueux, noble, éclatant.</p>
+                    <p><strong>But :</strong> Créer de l'admiration ou de l'empathie.</p>
+                </div>
+                
+                <div class="lexique-box devalorisant">
+                    <h4>Lexique Dévalorisant</h4>
+                    <p>Utilisé pour la médiocrité, l'avarice ou la laideur morale.</p>
+                    <p class="adjectifs">Adjectifs : Mesquin, sordide, vulgaire, flétri.</p>
+                    <p><strong>But :</strong> Critiquer la bourgeoisie ou dénoncer la misère.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="subsection">
+            <h2 class="section-title"><i class="fas fa-pen-nib"></i> ✍️ Production écrite : Du Résumé au Récit</h2>
+            
+            <div class="question-card" style="margin-bottom: 30px; padding: 20px; background: #fefefe; border: 1px solid #eee; border-radius: 10px;">
+                <h3 class="subsection-title" style="font-size: 1.2rem;">1. Le Résumé de texte long</h3>
+                <p>Pour résumer un chapitre réaliste (souvent long et descriptif) :</p>
+                <ul style="list-style: circle; padding-left: 20px; margin-top: 10px;">
+                    <li>Supprimer les descriptions ornementales.</li>
+                    <li>Garder uniquement les actions qui font progresser l'intrigue.</li>
+                    <li>Reformuler les dialogues en discours indirect.</li>
                 </ul>
             </div>
-            <div class="devalorisant">
-                <h3>Lexique Dévalorisant</h3>
-                <p>Utilisé pour la médiocrité, l'avarice ou la laideur morale.</p>
-                <ul>
-                    <li><em>Adjectifs :</em> Mesquin, sordide, vulgaire, flétri.</li>
-                    <li><em>But :</em> Critiquer la bourgeoisie ou dénoncer la misère.</li>
-                </ul>
+
+            <div class="question-card" style="padding: 20px; background: #fffcf0; border: 2px solid var(--accent); border-radius: 10px;">
+                <h3 class="subsection-title" style="font-size: 1.2rem;">2. Vers le Récit Complexe</h3>
+                <p><strong>Sujet :</strong> Rédigez le portrait d'un personnage ambitieux arrivant pour la première fois dans une grande ville.</p>
+                <p style="margin-top: 10px; font-style: italic; color: #666;"><strong>Contraintes :</strong> Utilisez l'effet de réel (détails vestimentaires) et un mélange de lexique valorisant (ses espoirs) et dévalorisant (la réalité brutale de la rue).</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section>
-        <h2>✍️ Production écrite : Du Résumé au Récit</h2>
-        <div class="methodo">
-            <h3>1. Le Résumé de texte long</h3>
-            <p>Pour résumer un chapitre réaliste (souvent long et descriptif) :</p>
-            <ul>
-                <li>Supprimer les descriptions ornementales.</li>
-                <li>Garder uniquement les actions qui font progresser l'intrigue.</li>
-                <li>Reformuler les dialogues en discours indirect.</li>
-            </ul>
-
-            <h3>2. Vers le Récit Complexe</h3>
-            <p><strong>Sujet :</strong> Rédigez le portrait d'un personnage ambitieux arrivant pour la première fois dans une grande ville. 
-            <em>Contraintes : Utilisez l'effet de réel (détails vestimentaires) et un mélange de lexique valorisant (ses espoirs) et dévalorisant (la réalité brutale de la rue).</em></p>
-        </div>
-    </section>
-
-    <div class="footer">
-        <hr>
-        <p>Machine à LANGUE - Programme 1ère Année Baccalauréat - 2026</p>
     </div>
 </div>
+
+<footer>
+    <p>Machine à LANGUE - Programme de Français XIXe Siècle.</p>
+</footer>
 
 </body>
 </html>
