@@ -3,289 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Machine à LANGUE - Programme Complet</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Machine à Langue</title>
+    
+    <!-- Lien vers le fichier manifest pour l'installation -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Couleur de la barre d'adresse sur mobile -->
+    <meta name="theme-color" content="#000000">
+    
+    <!-- Icône pour iPhone/Safari -->
+    <link rel="apple-touch-icon" href="icon.png">
+
     <style>
-        :root {
-            --primary: #2c3e50;
-            --accent: #3498db;
-            --trim1-color: #27ae60;
-            --trim2-color: #f39c12;
-            --trim3-color: #e74c3c;
-            --bg: #f8f9fa;
-        }
-
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: var(--bg);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            padding-top: 80px; /* Espace pour le menu fixe */
-        }
-
-        /* --- MENU ANIMÉ & EMBELLI --- */
-        header {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
-            background-color: var(--primary);
-            color: white;
-            padding: 15px 0;
-            text-align: center;
-            z-index: 1000;
-            transition: all 0.4s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        header.header-active {
-            background-color: #2980b9 !important;
-            padding: 10px 0 !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        header h2 { margin: 0; font-size: 1.5rem; }
-        header p { margin: 5px 0 0; font-size: 0.9rem; opacity: 0.9; }
-
-        /* --- FILTRES & NAVIGATION --- */
-        .filters {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-            padding: 0 10px;
-        }
-
-        button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            background: white;
-            font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
-
-        button.active { background: var(--accent); color: white; }
-        
-        .btn-ex-route {
-            background-color: var(--trim1-color);
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* --- GRILLE DES 10 SÉQUENCES --- */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-left: 8px solid #ccc;
-            transition: transform 0.3s ease;
-        }
-        .card:hover { transform: translateY(-5px); }
-
-        .trim1 { border-left-color: var(--trim1-color); }
-        .trim2 { border-left-color: var(--trim2-color); }
-        .trim3 { border-left-color: var(--trim3-color); }
-
-        .card h3 { margin-top: 0; color: var(--primary); }
-        .date { font-size: 0.85rem; color: #666; font-weight: bold; margin-bottom: 10px; }
-        .content-list { list-style: none; padding: 0; font-size: 0.9rem; }
-        .btn-open {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 8px 15px;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-        }
-
-        /* --- SECTION EXERCICE AJOUTÉE --- */
-        .quiz-container {
-            max-width: 900px;
-            margin: 40px auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border: 2px solid var(--accent);
-        }
-
-        .option-btn {
-            display: block; width: 100%; padding: 10px; margin: 5px 0;
-            border: 1px solid #ddd; border-radius: 5px; background: #f9f9f9;
-            cursor: pointer; text-align: left; transition: 0.3s;
-        }
-        .option-btn:hover { background: #eef7ff; }
-
-        .hidden { display: none; }
+        /* Votre style ici */
+        body { font-family: sans-serif; text-align: center; padding: 20px; }
     </style>
 </head>
 <body>
 
-<header id="navbar">
-    <h2><i class="fas fa-microchip"></i> Focus Français</h2>
-    <p>Machine à LANGUE - Planification Annuelle</p>
-</header>
+    <h1>Bienvenue sur Machine à Langue</h1>
+    <p>Votre application est prête à être installée.</p>
 
-<div class="filters">
-    <button onclick="filter('all')" class="active">Tout</button>
-    <button onclick="filter('trim1')">Trimestre 1</button>
-    <button onclick="filter('trim2')">Trimestre 2</button>
-    <button onclick="filter('trim3')">Trimestre 3</button>
-    <a href="exercices.html" class="btn-ex-route"><i class="fas fa-edit"></i> Faire les exercices</a>
-</div>
-
-<div class="grid">
-    <div class="card trim1">
-        <div class="date">Septembre - Octobre</div>
-        <h3>Séquence 1 : Types de discours</h3>
-        <ul class="content-list">
-            <li>📖 Narratif, Descriptif, Argumentatif</li>
-            <li>🧠 Types de phrases, Connecteurs</li>
-            <li>✍️ Suite de récit, Opinion</li>
-        </ul>
-        <a href="seq1.html" class="btn-open">Ouvrir</a>
-    </div>
-
-    <div class="card trim1">
-        <div class="date">Novembre - Décembre</div>
-        <h3>Séquence 2 : Récit réaliste</h3>
-        <ul class="content-list">
-            <li>📖 Caractéristiques, Focalisations</li>
-            <li>🧠 Expansion nominale, Relative</li>
-        </ul>
-        <a href="seq2.html" class="btn-open">Ouvrir</a>
-    </div>
-
-    <div class="card trim2">
-        <div class="date">Janvier</div>
-        <h3>Séquence 3 : Récit fantastique</h3>
-        <ul class="content-list">
-            <li>📖 Surnaturel, Suspense, Sonnet</li>
-            <li>🧠 Complétive, Participe passé</li>
-        </ul>
-        <a href="seq3.html" class="btn-open">Ouvrir</a>
-    </div>
-
-    <div class="card trim2">
-        <div class="date">Février</div>
-        <h3>Séquence 4 : Le Théâtre</h3>
-        <ul class="content-list">
-            <li>📖 Exposition, Nœud, Dénouement</li>
-            <li>🧠 Discours rapporté</li>
-        </ul>
-        <a href="seq4.html" class="btn-open">Ouvrir</a>
-    </div>
-
-    <div class="card trim2">
-        <div class="date">Mars</div>
-        <h3>Séquence 5 : L’autobiographie</h3>
-        <ul class="content-list">
-            <li>📖 Pacte, Vérité, Journal intime</li>
-        </ul>
-        <a href="seq5.html" class="btn-open">Ouvrir</a>
-    </div>
-
-    <div class="card trim3">
-        <div class="date">Avril</div>
-        <h3>Séquence 6 : Science-fiction</h3>
-        <ul class="content-list">
-            <li>📖 Espace-temps, Insolite</li>
-        </ul>
-        <a href="seq6.html" class="btn-open">Ouvrir</a>
-    </div>
-
-    <div class="card trim3">
-        <div class="date">Mai</div>
-        <h3>Séquence 7 : Récit argumentatif</h3>
-        <ul class="content-list">
-            <li>📖 Plaidoyer, Réquisitoire</li>
-        </ul>
-        <a href="seq7.html" class="btn-open">Ouvrir</a>
-    </div>
-
-    <div class="card trim3">
-        <div class="date">Fin Mai - Juin</div>
-        <h3>Séquence 8 : Siècle des Lumières</h3>
-        <ul class="content-list">
-            <li>📖 Satire, Ironie, Optimisme</li>
-        </ul>
-        <a href="seq8.html" class="btn-open">Ouvrir</a>
-    </div>
-
-    <div class="card trim3">
-        <div class="date">Juin</div>
-        <h3>Séquence 9 : Roman maghrébin</h3>
-        <ul class="content-list">
-            <li>📖 Tradition/Modernité (Khair-Eddine)</li>
-        </ul>
-        <a href="seq9.html" class="btn-open">Ouvrir</a>
-    </div>
-
-    <div class="card trim3">
-        <div class="date">Fin d'année</div>
-        <h3>Séquence 10 : Roman réaliste XIXe</h3>
-        <ul class="content-list">
-            <li>📖 Bourgeoisie, Argent, Effet de réel</li>
-        </ul>
-        <a href="seq10.html" class="btn-open">Ouvrir</a>
-    </div>
-</div>
-
-<div class="quiz-container">
-    <h3><i class="fas fa-pencil-alt"></i> Exercice d'échauffement</h3>
-    <p>Identifiez la figure de style : "Cette ville est un labyrinthe."</p>
-    <button class="option-btn" onclick="alert('Bravo !')">A) Métaphore</button>
-    <button class="option-btn" onclick="alert('Essaye encore !')">B) Comparaison</button>
-    <button class="option-btn" onclick="alert('Essaye encore !')">C) Personnification</button>
-</div>
-
-<script>
-    // Animation du menu au défilement
-    window.onscroll = function() {
-        var nav = document.getElementById('navbar');
-        if (window.pageYOffset > 50) {
-            nav.classList.add("header-active");
-        } else {
-            nav.classList.remove("header-active");
-        }
-    };
-
-    // Fonction de filtrage
-    function filter(c) {
-        const cards = document.querySelectorAll('.card');
-        const btns = document.querySelectorAll('button');
-        
-        btns.forEach(btn => btn.classList.remove('active'));
-        if(event) event.target.classList.add('active');
-
-        cards.forEach(card => {
-            card.classList.add('hidden');
-            if (c === 'all' || card.classList.contains(c)) {
-                card.classList.remove('hidden');
-            }
-        });
-    }
-</script>
-
+    <!-- Script d'activation de l'application (Service Worker) -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js')
+          .then(() => console.log("Application prête !"))
+          .catch(err => console.log("Erreur :", err));
+      }
+    </script>
 </body>
 </html>
